@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Manager</title>
+    <script src=""></script>
+</head>
+
+<body>
+    <header>
+        <h1>Event Guest List Manager</h1>
+    </header>
+
+    <section>
+        <h1>Entry Form</h1>
+        <form action="">
+            <div>
+                <label for="type">Enter Guest Name:</label>
+                <input type="text" name="Guest Name" id="guestName" placeholder="" required />
+            </div>
+            <div>
+                <label for="type">Category</label>
+                <select id="category">
+                    <option selected>Choose Category</option>
+                    <option value="family">Family</option>
+                    <option value="friends">Friends</option>
+                    <option value="colleagues">Colleagues</option>
+                </select>
+            </div>
+            <button type="submit" id="submitButton">Submit</button>
+        </form>
+    </section>
+
+    <section>
+        <h1>Guest List</h1>
+        <h2>Family List</h2>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Guest Name
+                        </th>
+                        <th>
+                            RSVP
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="familyTableBody"></tbody>
+            </table>
+        </div>
+
+        <h2>Friends List</h2>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Guest Name
+                        </th>
+                        <th>
+                            RSVP
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="friendsTableBody"></tbody>
+            </table>
+        </div>
+
+        <h2>Colleagues List</h2>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Guest Name
+                        </th>
+                        <th>
+                            RSVP
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="colleaguesTableBody"></tbody>
+            </table>
+        </div>
+    </section>
+
+</body>
+
+
+</html>
