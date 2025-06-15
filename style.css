@@ -50,6 +50,22 @@ button:hover, .btn:hover, #submit-btn:hover, #submitButton:hover {
     background: #1e3550;
 }
 
+.deleteBtn {
+    background: #2a4d69;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.deleteBtn:hover {
+    background: #d32f2f;
+    color: #fff;
+}
+
 /* Inputs */
 input, select, textarea, .input-field, #user-input {
     padding: 8px 12px;

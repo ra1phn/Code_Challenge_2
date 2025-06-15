@@ -75,10 +75,9 @@ function updateTable(category) {
   // Clear and re-render
   tableBody.innerHTML = '';
 
-  guestData[category].forEach(guest => {
+  guestData[category].forEach((guest, index) => {
     const row = document.createElement('tr');
 
-    // In updateTable, update row template:
     row.innerHTML = `
       <td>${guest.timeAdded}</td>
       <td>${guest.name}</td>
@@ -89,11 +88,20 @@ function updateTable(category) {
           <option value="Not Attending" ${guest.rsvp === 'Not Attending' ? 'selected' : ''}>Not Attending</option>
         </select>
       </td>
+      <td>
+        <button class="deleteBtn" type="button">Delete</button>
+      </td>
     `;
 
     const select = row.querySelector('.rsvpSelect');
     select.addEventListener('change', () => {
       guest.rsvp = select.value;
+    });
+
+    const deleteBtn = row.querySelector('.deleteBtn');
+    deleteBtn.addEventListener('click', () => {
+      guestData[category].splice(index, 1);
+      updateTable(category);
     });
 
     tableBody.appendChild(row);
