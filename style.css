@@ -30,6 +30,10 @@ h1, h2, .main-title, #header-title {
     margin-bottom: 16px;
 }
 
+h1 {
+    text-align: center;
+}
+
 /* Buttons */
 button, .btn, #submit-btn, #submitButton {
     background: #2a4d69;
@@ -152,8 +156,10 @@ li, .list-item {
 
 /* Section styling */
 section {
+    width: 75%;
+    max-width: 900px;
+    margin: 32px auto;
     padding: 32px 24px;
-    margin-bottom: 32px;
     background: #fff;
     border-radius: 14px;
     box-shadow: 0 4px 24px rgba(42,77,105,0.10);
@@ -177,4 +183,11 @@ section {
     .guestList th {
         background: #eaf1fb;
     }
+}
+
+/* No changes needed unless you want to adjust column width or alignment, but you may add: */
+.guestList th:first-child,
+.guestList td:first-child {
+    min-width: 110px;
+    text-align: center;
 }
