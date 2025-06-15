@@ -1,0 +1,180 @@
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li, button, input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Blue Theme */
+body {
+    background: #f4f6fa;
+    color: #222;
+    min-height: 100vh;
+    padding: 32px;
+}
+
+/* Main container */
+.container, #main-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(42,77,105,0.08);
+    padding: 32px;
+}
+
+/* Headings */
+h1, h2, .main-title, #header-title {
+    color: #2a4d69;
+    margin-bottom: 16px;
+}
+
+/* Buttons */
+button, .btn, #submit-btn, #submitButton {
+    background: #2a4d69;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 22px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover, .btn:hover, #submit-btn:hover, #submitButton:hover {
+    background: #1e3550;
+}
+
+/* Inputs */
+input, select, textarea, .input-field, #user-input {
+    padding: 8px 12px;
+    border: 1px solid #bfc9d1;
+    border-radius: 5px;
+    margin-bottom: 14px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus, .input-field:focus, #user-input:focus {
+    outline: none;
+    border-color: #2a4d69;
+}
+
+/* Lists */
+ul, .item-list, #result-list {
+    list-style: disc inside;
+    margin-bottom: 18px;
+}
+
+li, .list-item {
+    margin-bottom: 8px;
+}
+
+/* Utility classes */
+.mt-2, .margin-top { margin-top: 16px; }
+.mb-2, .margin-bottom { margin-bottom: 16px; }
+.text-center, #centered { text-align: center; }
+.rounded, #rounded-box { border-radius: 8px; }
+.shadow, #shadow-box { box-shadow: 0 2px 8px rgba(42,77,105,0.07); }
+
+/* Card and alert classes */
+.card, #info-card {
+    background: #f9fafc;
+    border: 1px solid #e3e7ed;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+.alert, #error-message {
+    background: #eaf1fb;
+    color: #2a4d69;
+    border: 1px solid #bfc9d1;
+    border-radius: 6px;
+    padding: 12px 18px;
+    margin-bottom: 16px;
+}
+
+/* Guest List Table */
+.guestList {
+    margin-bottom: 32px;
+    overflow-x: auto;
+    background: #f9fafc;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(42,77,105,0.10);
+    padding: 18px;
+}
+
+.guestList table {
+    width: 100%;
+    border-collapse: collapse;
+    background: transparent;
+}
+
+.guestList th, .guestList td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid #e3e7ed;
+    font-size: 1rem;
+}
+
+.guestList th {
+    background: #eaf1fb;
+    color: #2a4d69;
+    font-weight: 600;
+}
+
+.guestList tr:last-child td {
+    border-bottom: none;
+}
+
+.guestList tr:hover {
+    background: #f1f6fb;
+    transition: background 0.2s;
+}
+
+/* Guest Header */
+#listHeader {
+    padding: 20px 0 12px 0;
+    font-size: 2rem;
+    color: #2a4d69;
+    font-weight: 700;
+}
+
+.guestHeader {
+    padding: 12px 0 8px 0;
+    font-size: 1.5rem;
+    color: #2a4d69;
+    font-weight: 600;
+}
+
+/* Section styling */
+section {
+    padding: 32px 24px;
+    margin-bottom: 32px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(42,77,105,0.10);
+}
+
+/* Responsive for small screens */
+@media (max-width: 600px) {
+    .guestList table, .guestList thead, .guestList tbody, .guestList th, .guestList td, .guestList tr {
+        display: block;
+        width: 100%;
+    }
+    .guestList th, .guestList td {
+        padding: 10px 6px;
+    }
+    .guestList tr {
+        margin-bottom: 12px;
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(42,77,105,0.04);
+        background: #fff;
+    }
+    .guestList th {
+        background: #eaf1fb;
+    }
+}

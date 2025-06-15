@@ -5,24 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Manager</title>
-    <script src=""></script>
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-    <header>
+    <header id="mainHeader">
         <h1>Event Guest List Manager</h1>
     </header>
 
     <section>
         <h1>Entry Form</h1>
         <form action="">
-            <div>
-                <label for="type">Enter Guest Name:</label>
-                <input type="text" name="Guest Name" id="guestName" placeholder="" required />
+            <div class="entryForm">
+                <label for="guestName">Enter Guest Name:</label>
+                <input type="text" name="Guest Name" id="guestName" placeholder="Input name here.." required />
             </div>
-            <div>
-                <label for="type">Category</label>
-                <select id="category">
+            <div class="entryForm">
+                <label for="category">Category:</label>
+                <select id="category" name="category">
                     <option selected>Choose Category</option>
                     <option value="family">Family</option>
                     <option value="friends">Friends</option>
@@ -34,61 +34,43 @@
     </section>
 
     <section>
-        <h1>Guest List</h1>
-        <h2>Family List</h2>
-        <div>
+        <h1 id="listHeader">Guest List</h1>
+        <h2 class="guestHeader">Family List</h2>
+        <div class="guestList">
             <table>
                 <thead>
                     <tr>
-                        <th>
-                            #
-                        </th>
-                        <th>
-                            Guest Name
-                        </th>
-                        <th>
-                            RSVP
-                        </th>
+                        <th scope="col">#</th>
+                        <th scope="col">Guest Name</th>
+                        <th scope="col">RSVP</th>
                     </tr>
                 </thead>
                 <tbody id="familyTableBody"></tbody>
             </table>
         </div>
 
-        <h2>Friends List</h2>
-        <div>
+        <h2 class="guestHeader">Friends List</h2>
+        <div class="guestList">
             <table>
                 <thead>
                     <tr>
-                        <th>
-                            #
-                        </th>
-                        <th>
-                            Guest Name
-                        </th>
-                        <th>
-                            RSVP
-                        </th>
+                        <th scope="col">#</th>
+                        <th scope="col">Guest Name</th>
+                        <th scope="col">RSVP</th>
                     </tr>
                 </thead>
                 <tbody id="friendsTableBody"></tbody>
             </table>
         </div>
 
-        <h2>Colleagues List</h2>
-        <div>
+        <h2 class="guestHeader">Colleagues List</h2>
+        <div class="guestList">
             <table>
                 <thead>
                     <tr>
-                        <th>
-                            #
-                        </th>
-                        <th>
-                            Guest Name
-                        </th>
-                        <th>
-                            RSVP
-                        </th>
+                        <th scope="col">#</th>
+                        <th scope="col">Guest Name</th>
+                        <th scope="col">RSVP</th>
                     </tr>
                 </thead>
                 <tbody id="colleaguesTableBody"></tbody>
@@ -96,7 +78,7 @@
         </div>
     </section>
 
+<script src="/index.js"></script>
 </body>
-
 
 </html>
