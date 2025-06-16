@@ -2,83 +2,63 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Manager</title>
-    <link rel="stylesheet" href="/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Manager</title>
+  <link rel="stylesheet" href="/style.css" />
 </head>
 
 <body>
-    <header id="mainHeader">
-        <h1>Event Guest List Manager</h1>
-    </header>
+  <header id="mainHeader">
+    <h1>Event Guest List Manager</h1>
+  </header>
 
-    <section>
-        <h1>Entry Form</h1>
-        <form action="">
-            <div class="entryForm">
-                <label for="guestName">Enter Guest Name:</label>
-                <input type="text" name="Guest Name" id="guestName" placeholder="Input name here.." required />
-            </div>
-            <div class="entryForm">
-                <label for="category">Category:</label>
-                <select id="category" name="category">
-                    <option selected>Choose Category</option>
-                    <option value="family">Family</option>
-                    <option value="friends">Friends</option>
-                    <option value="colleagues">Colleagues</option>
-                </select>
-            </div>
-            <button type="submit" id="submitButton">Submit</button>
-        </form>
-    </section>
+  <section>
+    <h1>Entry Form</h1>
+    <form>
+      <div class="entryForm">
+        <label for="guestName">Enter Guest Name:</label>
+        <input type="text" id="guestName" placeholder="Input name here.." required />
+      </div>
+      <div class="entryForm">
+        <label for="category">Category:</label>
+        <select id="category" required>
+          <option value="" selected disabled hidden>Choose Category</option>
+          <option value="family">Family</option>
+          <option value="friends">Friends</option>
+          <option value="colleagues">Colleagues</option>
+        </select>
+      </div>
+      <!-- Remaining slots info will appear here -->
+      <div id="slotInfo"></div>
 
-    <section>
-        <h1 id="listHeader">Guest List</h1>
-        <h2 class="guestHeader">Family List</h2>
-        <div class="guestList">
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Time Added</th>
-                        <th scope="col">Guest Name</th>
-                        <th scope="col">RSVP</th>
-                    </tr>
-                </thead>
-                <tbody id="familyTableBody"></tbody>
-            </table>
-        </div>
+      <button type="submit" id="submitButton">Submit</button>
+    </form>
+  </section>
 
-        <h2 class="guestHeader">Friends List</h2>
-        <div class="guestList">
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Time Added</th>
-                        <th scope="col">Guest Name</th>
-                        <th scope="col">RSVP</th>
-                    </tr>
-                </thead>
-                <tbody id="friendsTableBody"></tbody>
-            </table>
-        </div>
+  <section>
+    <h1 id="listHeader">Guest List</h1>
+    <div class="guestList">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Guest Name</th>
+            <th>Time Invited</th>
+            <th>Category</th>
+            <th>RSVP</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
 
-        <h2 class="guestHeader">Colleagues List</h2>
-        <div class="guestList">
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Time Added</th>
-                        <th scope="col">Guest Name</th>
-                        <th scope="col">RSVP</th>
-                    </tr>
-                </thead>
-                <tbody id="colleaguesTableBody"></tbody>
-            </table>
-        </div>
-    </section>
+    <!-- Undo delete option will show here -->
+    <div id="undoContainer"></div>
+  </section>
 
-<script src="/index.js"></script>
+  <script src="/src/index.js"></script>
 </body>
 
 </html>

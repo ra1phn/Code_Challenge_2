@@ -1,4 +1,4 @@
-/* Reset some default styles */
+/* Reset default styles */
 body, h1, h2, h3, p, ul, li, button, input {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@ body, h1, h2, h3, p, ul, li, button, input {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Blue Theme */
+/* General layout */
 body {
     background: #f4f6fa;
     color: #222;
@@ -14,7 +14,6 @@ body {
     padding: 32px;
 }
 
-/* Main container */
 .container, #main-container {
     max-width: 700px;
     margin: 40px auto;
@@ -50,23 +49,35 @@ button:hover, .btn:hover, #submit-btn:hover, #submitButton:hover {
     background: #1e3550;
 }
 
+/* Delete button override */
 .deleteBtn {
     background: #2a4d69;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 7px 16px;
-    font-size: 1rem;
-    cursor: pointer;
     transition: background 0.2s;
 }
 
 .deleteBtn:hover {
     background: #d32f2f;
-    color: #fff;
 }
 
-/* Inputs */
+/* Undo button */
+.undo-btn {
+    display: inline-block;
+    margin-top: 12px;
+    background: #ffc107;
+    color: #222;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.undo-btn:hover {
+    background: #e0a800;
+}
+
+/* Input styles */
 input, select, textarea, .input-field, #user-input {
     padding: 8px 12px;
     border: 1px solid #bfc9d1;
@@ -99,7 +110,7 @@ li, .list-item {
 .rounded, #rounded-box { border-radius: 8px; }
 .shadow, #shadow-box { box-shadow: 0 2px 8px rgba(42,77,105,0.07); }
 
-/* Card and alert classes */
+/* Cards and alerts */
 .card, #info-card {
     background: #f9fafc;
     border: 1px solid #e3e7ed;
@@ -130,7 +141,6 @@ li, .list-item {
 .guestList table {
     width: 100%;
     border-collapse: collapse;
-    background: transparent;
 }
 
 .guestList th, .guestList td {
@@ -153,6 +163,17 @@ li, .list-item {
 .guestList tr:hover {
     background: #f1f6fb;
     transition: background 0.2s;
+}
+
+/* Highlight category rows */
+.friends-row {
+    background-color: #e3f2fd;
+}
+.colleagues-row {
+    background-color: #e8f5e9;
+}
+.family-row {
+    background-color: #ffebee;
 }
 
 /* Guest Header */
@@ -181,7 +202,7 @@ section {
     box-shadow: 0 4px 24px rgba(42,77,105,0.10);
 }
 
-/* Responsive for small screens */
+/* Responsive */
 @media (max-width: 600px) {
     .guestList table, .guestList thead, .guestList tbody, .guestList th, .guestList td, .guestList tr {
         display: block;
@@ -201,7 +222,7 @@ section {
     }
 }
 
-/* No changes needed unless you want to adjust column width or alignment, but you may add: */
+/* Optional alignment tweaks */
 .guestList th:first-child,
 .guestList td:first-child {
     min-width: 110px;
