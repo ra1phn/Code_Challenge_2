@@ -55,35 +55,6 @@ This project is a dynamic web app built with JavaScript, HTML, and CSS that allo
 
 ---
 
-### Example Interaction
-
->  You enter: `Susan`  
->  Choose: `Family`  
->  List shows:  
-```
-1. Susan — Family — Attending — [📝 Edit] [❌ Remove]  
-   Added: 10:32 AM  
-```
-
->  Click "Attending" to toggle  
-```
-Alice — Not Attending
-```
-
->  Edit her name to `Alicia`
-
->  Guest count updates  
-```
-7 remaining slots
-```
-
->  Add 11th guest →  
-```
-⚠️ Alert: Guest limit reached! You can only add up to 10 people.
-```
-
----
-
 ###  Testing Strategy
 
 Manual browser testing was used to confirm functionality:
@@ -102,12 +73,6 @@ Manual browser testing was used to confirm functionality:
 - Remaining slots counter (starts at 1, not 0)
 - Disabled form when limit is hit
 - Stylish, responsive design
-
----
-
-### Submission
-
-Code is pushed to GitHub and ready for deployment or presentation.
 
 ---
 
