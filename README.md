@@ -45,7 +45,7 @@ This project is a dynamic web app built with JavaScript, HTML, and CSS that allo
 
 ---
 
-### 🖌️ UI & Styling
+### UI & Styling
 
 - Elegant card-style layout using soft blue-themed color palette
 - Responsive table-style list with hover effects
@@ -55,7 +55,7 @@ This project is a dynamic web app built with JavaScript, HTML, and CSS that allo
 
 ---
 
-### 📋 Example Interaction
+### Example Interaction
 
 >  You enter: `Susan`  
 >  Choose: `Family`  
@@ -115,6 +115,4 @@ Code is pushed to GitHub and ready for deployment or presentation.
 
 Ralph Njuguna  
 Moringa School | Fullstack Student  
-GitHub: [@ra1phn](https://github.com/ra1phn)
-
 ---
