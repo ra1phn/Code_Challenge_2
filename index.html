@@ -5,21 +5,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Event Manager</title>
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <!-- Main header for the application -->
   <header id="mainHeader">
     <h1>Event Guest List Manager</h1>
   </header>
 
+  <!-- Section for the guest entry form -->
   <section>
     <h1>Entry Form</h1>
     <form>
+      <!-- Guest name input -->
       <div class="entryForm">
         <label for="guestName">Enter Guest Name:</label>
         <input type="text" id="guestName" placeholder="Input name here.." required />
       </div>
+      <!-- Category selection dropdown -->
       <div class="entryForm">
         <label for="category">Category:</label>
         <select id="category" required>
@@ -29,141 +33,39 @@
           <option value="colleagues">Colleagues</option>
         </select>
       </div>
-      <!-- Remaining slots -->
+      <!-- Placeholder for slot info (if needed by JS) -->
       <div id="slotInfo"></div>
-
+      <!-- Submit button for adding a guest -->
       <button type="submit" id="submitButton">Submit</button>
     </form>
   </section>
 
+  <!-- Section for displaying the guest list -->
   <section>
+    <!-- Guest list header -->
     <h1 id="listHeader">Guest List</h1>
     <div class="guestList">
-      <table> 
+      <table>
         <thead>
           <tr>
-            <th>#</th>
-            <th>Guest Name</th>
-            <th>Time Invited</th>
-            <th>Category</th>
-            <th>RSVP</th>
-            <th>Action</th>
+            <!-- Table headers: must match the order in JS -->
+            <th scope="col">Time invited</th>
+            <th scope="col">Guest Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">RSVP</th>
+            <th scope="col"></th> <!-- For the delete button -->
           </tr>
         </thead>
+        <!-- Table body will be filled dynamically by JS -->
         <tbody id="tableBody"></tbody>
       </table>
     </div>
-
-    <!-- Undo delete option -->
+    <!-- Undo container for possible undo actions (optional/for future use) -->
     <div id="undoContainer"></div>
   </section>
 
-  <script src="/src/index.js"></script>
-  <script>
-    // Store guest data by category
-    const guestData = {
-        family: [],
-        friends: [],
-        colleagues: []
-    };
-
-    // Helper to get the selected category from the dropdown
-    function getSelectedCategory() {
-        return document.getElementById('category').value;
-    }
-
-    // Handle form submission to add a new guest
-    document.querySelector('form').addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const nameInput = document.getElementById('guestName');
-        const category = getSelectedCategory();
-
-        // Validate input: must have a name and a valid category
-        if (!nameInput.value.trim() || !guestData[category] || category === "" || category === "Choose Category") return;
-
-        // Create guest object with name, RSVP status, and time added
-        const guest = {
-            name: nameInput.value.trim(),
-            rsvp: 'Pending',
-            timeAdded: new Date().toLocaleString([], {
-                year: 'numeric',
-                month: 'short',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit'
-            })
-        };
-
-        // Add guest to the appropriate category array
-        guestData[category].push(guest);
-
-        // Reset form fields
-        nameInput.value = '';
-        document.getElementById('category').selectedIndex = 0;
-
-        // Update the guest list table
-        updateTable();
-    });
-
-    // Render the guest list table with all guests from all categories
-    function updateTable() {
-        const tableBody = document.getElementById('tableBody');
-        tableBody.innerHTML = '';
-
-        // Gather all guests with their category
-        const allGuests = [];
-        Object.keys(guestData).forEach(category => {
-            guestData[category].forEach(guest => {
-                allGuests.push({
-                    ...guest,
-                    category
-                });
-            });
-        });
-
-        // Create a table row for each guest
-        allGuests.forEach((guest, index) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${guest.timeAdded}</td>
-                <td>${guest.name}</td>
-                <td>${guest.category.charAt(0).toUpperCase() + guest.category.slice(1)}</td>
-                <td>
-                    <select class="rsvpSelect">
-                        <option value="Pending" disabled ${guest.rsvp === 'Pending' ? 'selected' : ''} hidden>Pending</option>
-                        <option value="Attending" ${guest.rsvp === 'Attending' ? 'selected' : ''}>Attending</option>
-                        <option value="Not Attending" ${guest.rsvp === 'Not Attending' ? 'selected' : ''}>Not Attending</option>
-                    </select>
-                </td>
-                <td>
-                    <button class="deleteBtn" type="button">Delete</button>
-                </td>
-            `;
-
-            // Update RSVP status when changed
-            row.querySelector('.rsvpSelect').addEventListener('change', function () {
-                guest.rsvp = this.value;
-            });
-
-            // Remove guest from the list when Delete is clicked
-            row.querySelector('.deleteBtn').addEventListener('click', function () {
-                // Find and remove the guest from the correct category array
-                const arr = guestData[guest.category];
-                const idx = arr.findIndex(g => g.name === guest.name && g.timeAdded === guest.timeAdded);
-                if (idx > -1) {
-                    arr.splice(idx, 1);
-                    updateTable();
-                }
-            });
-
-            tableBody.appendChild(row);
-        });
-    }
-
-    // Initialize the table
-    updateTable();
-  </script>
+  <!-- Link to external JavaScript file -->
+  <script src="src/index.js"></script>
 </body>
 
 </html>

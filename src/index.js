@@ -25,17 +25,16 @@ function capitalizeEachWord(name) {
     .join(' ');
 }
 
-// Update remaining slots info when category is selected
-categorySelect.addEventListener('change', () => {
-  const category = categorySelect.value;
-  if (category && guestData[category]) {
-    const remaining = 10 - guestData[category].length;
-    slotInfo.textContent = `${remaining} remaining slot${remaining === 1 ? '' : 's'}`;
-  } else {
-    slotInfo.textContent = '';
-  }
-});
+// ✅ Update global remaining slots counter
+function updateSlotInfo() {
+  const totalGuests = Object.values(guestData)
+    .reduce((sum, list) => sum + list.length, 0);
+  const remaining = 10 - totalGuests;
+  slotInfo.textContent = `${remaining} remaining slot${remaining === 1 ? '' : 's'}`;
+}
 
+// Show remaining slots on category change
+categorySelect.addEventListener('change', updateSlotInfo);
 
 // Handle form submission
 form.addEventListener('submit', function (e) {
@@ -49,8 +48,11 @@ form.addEventListener('submit', function (e) {
     return;
   }
 
-  if (guestData[category].length >= 10) {
-    alert(`The ${category} list is full. Only 10 guests allowed.`);
+  const totalGuests = Object.values(guestData)
+    .reduce((sum, list) => sum + list.length, 0);
+
+  if (totalGuests >= 10) {
+    alert('Guest limit reached. Maximum of 10 guests allowed.');
     return;
   }
 
@@ -70,13 +72,13 @@ form.addEventListener('submit', function (e) {
   guestData[category].push(guest);
   updateTable();
   form.reset();
-  slotInfo.textContent = ''; // Clear slot info after submit
+  updateSlotInfo(); // ✅ Update counter after submit
 });
 
 // Update the guest table based on current data
 function updateTable() {
   tableBody.innerHTML = '';
-  undoContainer.innerHTML = ''; // Clear undo if table is redrawn
+  undoContainer.innerHTML = '';
 
   const allGuests = [];
 
@@ -155,6 +157,8 @@ function updateTable() {
 
     tableBody.appendChild(row);
   });
+
+  updateSlotInfo(); // ✅ Always update counter after table refresh
 }
 
 // Show undo delete button
@@ -171,3 +175,6 @@ function showUndoOption() {
 
   undoContainer.appendChild(undoBtn);
 }
+
+// Initialize
+updateTable();
