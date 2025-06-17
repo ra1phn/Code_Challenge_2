@@ -45,42 +45,13 @@ This project is a dynamic web app built with JavaScript, HTML, and CSS that allo
 
 ---
 
-### 🖌️ UI & Styling
+### UI & Styling
 
 - Elegant card-style layout using soft blue-themed color palette
 - Responsive table-style list with hover effects
 - Color-coded guest tags.
 - Smooth interactions with buttons and form inputs
 - Reduced container height from 373px to 450px width while keeping a clean aspect ratio
-
----
-
-### 📋 Example Interaction
-
->  You enter: `Susan`  
->  Choose: `Family`  
->  List shows:  
-```
-1. Susan — Family — Attending — [📝 Edit] [❌ Remove]  
-   Added: 10:32 AM  
-```
-
->  Click "Attending" to toggle  
-```
-Alice — Not Attending
-```
-
->  Edit her name to `Alicia`
-
->  Guest count updates  
-```
-7 remaining slots
-```
-
->  Add 11th guest →  
-```
-⚠️ Alert: Guest limit reached! You can only add up to 10 people.
-```
 
 ---
 
@@ -105,16 +76,8 @@ Manual browser testing was used to confirm functionality:
 
 ---
 
-### Submission
-
-Code is pushed to GitHub and ready for deployment or presentation.
-
----
-
 ### Author
 
 Ralph Njuguna  
 Moringa School | Fullstack Student  
-GitHub: [@ra1phn](https://github.com/ra1phn)
-
 ---
