@@ -29,7 +29,7 @@
           <option value="colleagues">Colleagues</option>
         </select>
       </div>
-      <!-- Remaining slots info will appear here -->
+      <!-- Remaining slots -->
       <div id="slotInfo"></div>
 
       <button type="submit" id="submitButton">Submit</button>
@@ -39,7 +39,7 @@
   <section>
     <h1 id="listHeader">Guest List</h1>
     <div class="guestList">
-      <table>
+      <table> 
         <thead>
           <tr>
             <th>#</th>
@@ -54,11 +54,116 @@
       </table>
     </div>
 
-    <!-- Undo delete option will show here -->
+    <!-- Undo delete option -->
     <div id="undoContainer"></div>
   </section>
 
   <script src="/src/index.js"></script>
+  <script>
+    // Store guest data by category
+    const guestData = {
+        family: [],
+        friends: [],
+        colleagues: []
+    };
+
+    // Helper to get the selected category from the dropdown
+    function getSelectedCategory() {
+        return document.getElementById('category').value;
+    }
+
+    // Handle form submission to add a new guest
+    document.querySelector('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const nameInput = document.getElementById('guestName');
+        const category = getSelectedCategory();
+
+        // Validate input: must have a name and a valid category
+        if (!nameInput.value.trim() || !guestData[category] || category === "" || category === "Choose Category") return;
+
+        // Create guest object with name, RSVP status, and time added
+        const guest = {
+            name: nameInput.value.trim(),
+            rsvp: 'Pending',
+            timeAdded: new Date().toLocaleString([], {
+                year: 'numeric',
+                month: 'short',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            })
+        };
+
+        // Add guest to the appropriate category array
+        guestData[category].push(guest);
+
+        // Reset form fields
+        nameInput.value = '';
+        document.getElementById('category').selectedIndex = 0;
+
+        // Update the guest list table
+        updateTable();
+    });
+
+    // Render the guest list table with all guests from all categories
+    function updateTable() {
+        const tableBody = document.getElementById('tableBody');
+        tableBody.innerHTML = '';
+
+        // Gather all guests with their category
+        const allGuests = [];
+        Object.keys(guestData).forEach(category => {
+            guestData[category].forEach(guest => {
+                allGuests.push({
+                    ...guest,
+                    category
+                });
+            });
+        });
+
+        // Create a table row for each guest
+        allGuests.forEach((guest, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${guest.timeAdded}</td>
+                <td>${guest.name}</td>
+                <td>${guest.category.charAt(0).toUpperCase() + guest.category.slice(1)}</td>
+                <td>
+                    <select class="rsvpSelect">
+                        <option value="Pending" disabled ${guest.rsvp === 'Pending' ? 'selected' : ''} hidden>Pending</option>
+                        <option value="Attending" ${guest.rsvp === 'Attending' ? 'selected' : ''}>Attending</option>
+                        <option value="Not Attending" ${guest.rsvp === 'Not Attending' ? 'selected' : ''}>Not Attending</option>
+                    </select>
+                </td>
+                <td>
+                    <button class="deleteBtn" type="button">Delete</button>
+                </td>
+            `;
+
+            // Update RSVP status when changed
+            row.querySelector('.rsvpSelect').addEventListener('change', function () {
+                guest.rsvp = this.value;
+            });
+
+            // Remove guest from the list when Delete is clicked
+            row.querySelector('.deleteBtn').addEventListener('click', function () {
+                // Find and remove the guest from the correct category array
+                const arr = guestData[guest.category];
+                const idx = arr.findIndex(g => g.name === guest.name && g.timeAdded === guest.timeAdded);
+                if (idx > -1) {
+                    arr.splice(idx, 1);
+                    updateTable();
+                }
+            });
+
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Initialize the table
+    updateTable();
+  </script>
 </body>
 
 </html>
